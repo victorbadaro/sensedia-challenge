@@ -1,5 +1,12 @@
+import { Header } from "./components/Header";
+
+import { CssBaseline } from '@material-ui/core';
+
 export function App() {
   return (
-    <h1>Hello, Sensedia!</h1>
+    <>
+      <CssBaseline />
+      <Header />
+    </>
   );
 }
