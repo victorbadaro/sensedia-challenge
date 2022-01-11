@@ -1,6 +1,6 @@
 import { styled, AppBar } from '@mui/material';
 
-export const Container = styled(AppBar)(({ theme }) => ({
+export const HeaderContainer = styled(AppBar)(({ theme }) => ({
     padding: '14px 0',
     backgroundColor: '#5C21AA'
 }));
