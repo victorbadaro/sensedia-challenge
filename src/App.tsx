@@ -1,6 +1,6 @@
-import { Header } from "./components/Header";
+import { Header } from './components/Header';
 
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline } from '@mui/material';
 
 export function App() {
   return (
