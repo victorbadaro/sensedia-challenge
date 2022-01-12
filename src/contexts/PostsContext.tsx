@@ -45,7 +45,7 @@ function PostsProvider({ children }: PostsProviderProps) {
             const postsData: PostData[] = postsResult.data;
             const usersData: User[] = usersResult.data;
 
-            const customPosts = postsData.map(post => {
+            let customPosts = postsData.map(post => {
                 const user: User | undefined = usersData.find(user => user.id === post.userId);
 
                 return {
@@ -56,6 +56,19 @@ function PostsProvider({ children }: PostsProviderProps) {
                     body: post.body,
                     createdAt: `${new Date().toLocaleDateString('pt-BR')} ${new Date().toLocaleTimeString('pt-BR', { hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' })}`
                 };
+            });
+
+            customPosts.sort((postA, postB) => {
+                const titleA = postA.title.toLowerCase();
+                const titleB = postB.title.toLowerCase();
+    
+                if(titleA < titleB)
+                    return -1;
+                
+                if(titleA > titleB)
+                    return 1;
+                
+                return 0;
             });
 
             setPostsFromApi(customPosts);
