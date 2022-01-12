@@ -1,12 +1,13 @@
 import { FormEvent, useState } from 'react';
 import { Search as SearchIcon, FormatListBulleted as ListIcon, GridView as GridIcon } from '@mui/icons-material';
+import { useViews } from '../../hooks/useViews';
 import { usePosts } from '../../hooks/usePosts';
 
 import { StyledForm, StyledTextField, StyledMenuItem, SubmitButton, ClearButton } from './styles';
 
 export function Form() {
     const [search, setSearch] = useState('');
-    const [view, setView] = useState('list');
+    const { view, setView } = useViews();
     const { filterPostsByTitle } = usePosts();
 
     function handleClearButtonClick() {

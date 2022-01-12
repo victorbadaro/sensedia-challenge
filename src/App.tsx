@@ -1,5 +1,6 @@
 import { Header } from './components/Header';
 import { PostsProvider } from './contexts/PostsContext';
+import { ViewsProvider } from './contexts/ViewsContext';
 import { ListView } from './components/ListView';
 import { Form } from './components/Form';
 
@@ -9,12 +10,14 @@ import { MainContainer } from './styles';
 export function App() {
   return (
     <PostsProvider>
-      <CssBaseline />
-      <Header />
-      <MainContainer>
-        <Form />
-        <ListView />
-      </MainContainer>
+      <ViewsProvider>
+        <CssBaseline />
+        <Header />
+        <MainContainer>
+          <Form />
+          <ListView />
+        </MainContainer>
+      </ViewsProvider>
     </PostsProvider>
   );
 }
