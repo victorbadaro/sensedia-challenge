@@ -1,11 +1,9 @@
 import { Header } from './components/Header';
 import { PostsProvider } from './contexts/PostsContext';
 import { ViewsProvider } from './contexts/ViewsContext';
-import { ListView } from './components/ListView';
-import { Form } from './components/Form';
+import { Home } from './pages/Home';
 
 import { CssBaseline } from '@mui/material';
-import { MainContainer } from './styles';
 
 export function App() {
   return (
@@ -13,10 +11,7 @@ export function App() {
       <ViewsProvider>
         <CssBaseline />
         <Header />
-        <MainContainer>
-          <Form />
-          <ListView />
-        </MainContainer>
+        <Home />
       </ViewsProvider>
     </PostsProvider>
   );
