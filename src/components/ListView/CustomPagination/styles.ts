@@ -6,7 +6,7 @@ export const StyledPagination = styled(Pagination)(({ theme }) => ({
         width: '20px',
         height: '20px'
     },
-    '& .css-19micn4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected': {
+    '& .MuiPaginationItem-page.Mui-selected': {
         backgroundColor: '#5C21AA'
     }
 }));

@@ -15,14 +15,14 @@ export const StyledForm = styled('form')(({ theme }) => ({
 }));
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
-    '& .css-cio0x1-MuiInputBase-root-MuiFilledInput-root:after': {
+    '& .MuiInputBase-root.MuiFilledInput-root:after': {
         borderBottomColor: '#5C21AA'
     },
-    '& .css-c5v1qu-MuiInputBase-input-MuiFilledInput-input': {
+    '& .MuiInputBase-input.MuiFilledInput-input': {
         padding: '7.5px 16px',
         color: '#6A6A6A'
     },
-    '& .css-1gzkxga-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input': {
+    '& .MuiSelect-select.MuiInputBase-input-MuiFilledInput-input': {
         padding: '7.5px 16px',
         fontSize: '16px',
         color: '#6A6A6A'
