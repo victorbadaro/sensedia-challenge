@@ -1,16 +1,23 @@
 import { FormEvent, useState } from 'react';
 import { Search as SearchIcon, FormatListBulleted as ListIcon, GridView as GridIcon } from '@mui/icons-material';
+import { usePosts } from '../../hooks/usePosts';
 
 import { StyledForm, StyledTextField, StyledMenuItem, SubmitButton, ClearButton } from './styles';
 
 export function Form() {
     const [search, setSearch] = useState('');
     const [view, setView] = useState('list');
+    const { filterPostsByTitle } = usePosts();
+
+    function handleClearButtonClick() {
+        setSearch('');
+        filterPostsByTitle('');
+    }
 
     function handleFormSubmit(event: FormEvent) {
         event.preventDefault();
 
-        console.log({ search, view });
+        filterPostsByTitle(search);
     }
 
     return (
@@ -51,7 +58,7 @@ export function Form() {
                 </SubmitButton>
                 <ClearButton
                     variant='text'
-                    onClick={() => setSearch('')}
+                    onClick={handleClearButtonClick}
                 >
                     CLEAR
                 </ClearButton>

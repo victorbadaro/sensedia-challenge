@@ -28,11 +28,13 @@ interface PostsProviderProps {
 
 interface PostsContextProps {
     posts: Post[];
+    filterPostsByTitle: (searchedTitle: string) => void;
 }
 
 const PostsContext = createContext<PostsContextProps>({} as PostsContextProps);
 
 function PostsProvider({ children }: PostsProviderProps) {
+    const [postsFromApi, setPostsFromApi] = useState<Post[]>([]);
     const [posts, setPosts] = useState<Post[]>([]);
 
     useEffect(() => {
@@ -43,7 +45,7 @@ function PostsProvider({ children }: PostsProviderProps) {
             const postsData: PostData[] = postsResult.data;
             const usersData: User[] = usersResult.data;
 
-            const posts = postsData.map(post => {
+            const customPosts = postsData.map(post => {
                 const user: User | undefined = usersData.find(user => user.id === post.userId);
 
                 return {
@@ -56,12 +58,19 @@ function PostsProvider({ children }: PostsProviderProps) {
                 };
             });
 
-            setPosts(posts);
+            setPostsFromApi(customPosts);
+            setPosts(customPosts);
         })();
     }, []);
 
+    function filterPostsByTitle(searchedTitle: string) {
+        const filteredPosts = postsFromApi.filter(post => post.title.includes(searchedTitle.toLowerCase()));
+
+        setPosts(filteredPosts);
+    }
+
     return (
-        <PostsContext.Provider value={{ posts }}>
+        <PostsContext.Provider value={{ posts, filterPostsByTitle }}>
             {children}
         </PostsContext.Provider>
     );
